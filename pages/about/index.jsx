@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./index.css"; // Import the CSS file
 import LoginForms from "@/components/forms/LoginForms";
 
 function Index() {
