@@ -2,21 +2,22 @@ import Head from "next/head";
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { baseUrl } from "@/components/constants/constants";
+import { useRouter } from "next/router";
 
 export default function Home() {
-  return (
-    <>
-      <p>HLO</p>
-    </>
-  );
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      router.replace("/home");
+    } else {
+      router.replace("/login");
+    }
+  }, []);
+
+  return <p>Loading...</p>;
 }
