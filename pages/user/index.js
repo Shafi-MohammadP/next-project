@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { getToken } from "@/utils/auth";
+import { baseUrl } from "@/components/constants/constants";
 
 function Index() {
   const router = useRouter();
@@ -21,7 +22,7 @@ function Index() {
 
   const fetchUsers = async (token) => {
     try {
-      const res = await axios.get("http://localhost:5000/get-user-details/", {
+      const res = await axios.get(`${baseUrl}/get-user-details/`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUser(res.data);
@@ -41,7 +42,7 @@ function Index() {
     
     try {
       await axios.post(
-        "http://localhost:5000/add-user-details",
+        `${baseUrl}/add-user-details`,
         formData,
         {
           headers: {
